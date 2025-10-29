@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automedicação: O Risco Que Você Não Vê</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilo base com a fonte Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Classes para controlar a exibição do modal */
+        .modal {
+            display: none; /* Oculto por padrão */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .modal.show {
+            display: flex; /* Exibido como flex para centralizar */
+            opacity: 1;
+        }
+        
+        /* Para garantir que o track do carrossel não quebre a linha */
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-item {
+            flex-shrink: 0;
+            width: 100%; /* Em telas pequenas, cada item ocupa 100% */
+        }
+        
+        @media (min-width: 768px) {
+            .carousel-item {
+                width: 50%; /* 2 itens visíveis em telas médias */
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .carousel-item {
+                width: 33.3333%; /* 3 itens visíveis em telas grandes */
+            }
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-green-50 py-16 text-center px-6">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-green-800 mb-4">
+            Automedicação: O Risco Que Você Não Vê!
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+            "Antes de tomar qualquer remédio por conta própria, entenda por que isso pode ser fatal. A sua saúde é muito importante para arriscar."
+        </p>
+    </header>
+
+    <!-- Seção 1: O que é Automedicação? -->
+    <section id="o-que-e" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+            <div>
+                <h2 class="text-3xl font-bold text-center text-green-800 mb-4">O que é Automedicação?</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    É usar remédios sem a orientação de um médico ou farmacêutico. Isso inclui tomar o que sobrou de um tratamento antigo em casa, aceitar a indicação de um vizinho ou amigo, ou seguir o que viu na internet.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 2: Os 6 Riscos Fatais (Grid de Cards) -->
+    <section id="riscos" class="py-20 bg-green-50 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center text-green-800 mb-12">
+                Os Riscos Fatais da Automedicação
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Máscara da Doença -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-1">
+                    <!-- Espaço reservado para imagem/ícone -->
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"Máscara da Doença"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2: Efeitos-Sombra -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-2">
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"Efeitos-Sombra"</h3>
+                    </div>
+                </div>
+                
+                <!-- Card 3: Guerra de Remédios -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-3">
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"Guerra de Remédios"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 4: O Veneno da Dose -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-4">
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"O Veneno da Dose"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 5: Superbactérias -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-5">
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"Superbactérias"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 6: O Vício Escondido -->
+                <div class="card-modal-trigger bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300" data-modal-target="modal-6">
+                    <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('img/card-bg.webp');"></div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-800">"O Vício Escondido"</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção 3: Carrossel de Remédios Comuns -->
+    <section id="remedios" class="py-20 px-6">
+        <h2 class="text-3xl font-bold text-center text-green-800 mb-12">
+            Remédios Comuns e Seus Riscos
+        </h2>
+        
+        <div class="max-w-6xl mx-auto relative">
+            <!-- Container do Carrossel -->
+            <div class="overflow-hidden">
+                <div id="carousel-track" class="carousel-track">
+                    
+                    <!-- Card 1: Dipirona / Ibuprofeno -->
+                    <div class="carousel-item p-4">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-6 h-full border border-gray-200 flex flex-col">
+                            <h3 class="text-xl font-bold text-green-700 mb-4">Dipirona / Ibuprofeno</h3>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2">O Que Fazer (Fluxo Correto):</h4>
+                            <p class="text-gray-700 mb-4 text-sm">Usar a dose mínima, sempre após a comida (Ibuprofeno). Buscar médico se a dor/febre não passar em 48h.</p>
+                            
+                            <h4 class="font-semibold text-red-700 mb-2">Riscos ao Usar Sem Orientação:</h4>
+                            <p class="text-gray-700 text-sm">Podem causar úlceras, sangramentos e afetar rins e coração. Podem mascarar febres de infecções graves.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2: Cetoprofeno -->
+                    <div class="carousel-item p-4">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-6 h-full border border-gray-200 flex flex-col">
+                            <h3 class="text-xl font-bold text-green-700 mb-4">Cetoprofeno (Anti-inflamatório)</h3>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2">O Que Fazer (Fluxo Correto):</h4>
+                            <p class="text-gray-700 mb-4 text-sm">Somente usar sob indicação médica e pelo tempo exato.</p>
+                            
+                            <h4 class="font-semibold text-red-700 mb-2">Riscos ao Usar Sem Orientação:</h4>
+                            <p class="text-gray-700 text-sm">Alto risco de gastrite, úlcera e problemas renais ou cardíacos, principalmente se usado por muito tempo ou com outros remédios.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Amoxicilina -->
+                    <div class="carousel-item p-4">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-6 h-full border border-gray-200 flex flex-col">
+                            <h3 class="text-xl font-bold text-green-700 mb-4">Amoxicilina (Antibiótico)</h3>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2">O Que Fazer (Fluxo Correto):</h4>
+                            <p class="text-gray-700 mb-4 text-sm">NUNCA iniciar por conta própria. SÓ com prescrição e seguir o tratamento até o fim!</p>
+                            
+                            <h4 class="font-semibold text-red-700 mb-2">Riscos ao Usar Sem Orientação:</h4>
+                            <p class="text-gray-700 text-sm">Causa Resistência Bacteriana (Superbactérias) e é inútil para gripes e resfriados (que são vírus).</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4: Anti-histamínicos -->
+                    <div class="carousel-item p-4">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-6 h-full border border-gray-200 flex flex-col">
+                            <h3 class="text-xl font-bold text-green-700 mb-4">Anti-histamínicos (Alergia)</h3>
+                            
+                            <h4 class="font-semibold text-gray-800 mb-2">O Que Fazer (Fluxo Correto):</h4>
+                            <p class="text-gray-700 mb-4 text-sm">Confirmar com o profissional de saúde que a causa é realmente alergia, e não infecção.</p>
+                            
+                            <h4 class="font-semibold text-red-700 mb-2">Riscos ao Usar Sem Orientação:</h4>
+                            <p class="text-gray-700 text-sm">Podem causar sonolência perigosa (ao dirigir), mascarar sintomas e interagir com outros medicamentos.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Botões do Carrossel -->
+            <button id="carousel-prev" class="absolute top-1/2 left-0 md:-left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors">
+                <svg class="w-6 h-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
+            <button id="carousel-next" class="absolute top-1/2 right-0 md:-right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors">
+                <svg class="w-6 h-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Mensagem Final -->
+    <footer class="bg-green-700 text-white py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Caixa de Destaque (Logo/Grupo) -->
+            <!-- <div class="mb-10 p-6 bg-white bg-opacity-10 rounded-lg border border-white border-opacity-30">
+                <img src="img/esuda.png" alt="Logo da Faculdade" class="max-h-20 mx-auto">
+            </div> -->
+            <div class="mb-10 p-6 rounded-lg">
+                <img src="img/esuda.png" alt="Logo da Faculdade" class="max-h-20 mx-auto">
+            </div>
+
+            <p class="text-3xl font-bold leading-relaxed">
+                Sua vida é o seu bem mais precioso.
+            </p>
+            <p class="text-2xl font-semibold opacity-90 mt-2">
+                Não a coloque em risco por um palpite. Converse sempre com um profissional de saúde!
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Modais (Ocultos por padrão) -->
+    
+    <!-- Modal 1 -->
+    <div id="modal-1" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"Máscara da Doença" (Mascaramento)</h3>
+            <p class="text-gray-700 leading-relaxed">O remédio alivia o sintoma (como uma dor ou febre) e você acha que está tudo bem, mas a doença real e grave continua progredindo por dentro, atrasando o diagnóstico correto e o tratamento que você realmente precisa.</p>
+        </div>
+    </div>
+    
+    <!-- Modal 2 -->
+    <div id="modal-2" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"Efeitos-Sombra" (Reações Adversas)</h3>
+            <p class="text-gray-700 leading-relaxed">Seu corpo pode reagir mal de um jeito inesperado. Isso pode ser desde um mal-estar forte, tonturas, até reações alérgicas graves que podem fechar a garganta e precisar de atendimento de emergência.</p>
+        </div>
+    </div>
+    
+    <!-- Modal 3 -->
+    <div id="modal-3" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"Guerra de Remédios" (Interações)</h3>
+            <p class="text-gray-700 leading-relaxed">Um remédio pode "brigar" com o outro que você já toma (como um de pressão alta). Essa briga pode anular o efeito de ambos ou, pior, potencializar um efeito colateral perigoso, sobrecarregando seu corpo.</p>
+        </div>
+    </div>
+    
+    <!-- Modal 4 -->
+    <div id="modal-4" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"O Veneno da Dose" (Danos a Órgãos)</h3>
+            <p class="text-gray-700 leading-relaxed">Fígado, rins e estômago são os mais afetados. O uso errado, em dose alta ou por tempo prolongado, pode causar lesões permanentes (como hepatite medicamentosa ou insuficiência renal) antes mesmo de você perceber.</p>
+        </div>
+    </div>
+    
+    <!-- Modal 5 -->
+    <div id="modal-5" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"Superbactérias" (Resistência)</h3>
+            <p class="text-gray-700 leading-relaxed">Usar antibióticos (como Amoxicilina) de forma errada, na dose errada ou parar antes da hora, faz as bactérias "aprenderem" a se defender. Elas ficam mais fortes e o remédio para de funcionar quando você realmente precisar dele para uma infecção grave.</p>
+        </div>
+    </div>
+    
+    <!-- Modal 6 -->
+    <div id="modal-6" class="modal fixed inset-0 bg-black bg-opacity-70 items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-lg w-full p-8 relative">
+            <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-green-700 mb-4">"O Vício Escondido" (Dependência)</h3>
+            <p class="text-gray-700 leading-relaxed">Alguns remédios que parecem inofensivos, especialmente os usados para dor, ansiedade ou para dormir, podem criar dependência física e psicológica se usados sem controle e por muito tempo.</p>
+        </div>
+    </div>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Lógica dos Modais ---
+            
+            const modalTriggers = document.querySelectorAll('.card-modal-trigger');
+            const closeButtons = document.querySelectorAll('.modal-close-btn');
+            const modals = document.querySelectorAll('.modal');
+
+            // Abrir modal
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const targetModalId = trigger.getAttribute('data-modal-target');
+                    const modal = document.getElementById(targetModalId);
+                    if (modal) {
+                        modal.classList.add('show');
+                    }
+                });
+            });
+
+            // Fechar modal pelo botão 'X'
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.classList.remove('show');
+                    }
+                });
+            });
+
+            // Fechar modal clicando fora (no overlay)
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    // Se o clique foi no próprio fundo do modal (overlay)
+                    if (e.target === modal) {
+                        modal.classList.remove('show');
+                    }
+                });
+            });
+            
+            // Fechar modal com a tecla 'Escape'
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.classList.contains('show')) {
+                            modal.classList.remove('show');
+                        }
+                    });
+                }
+            });
+
+            // --- Lógica do Carrossel ---
+            
+            const track = document.getElementById('carousel-track');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            
+            if (track && prevBtn && nextBtn) {
+                let currentIndex = 0;
+                let items;
+                let itemWidth;
+                let visibleItems;
+
+                function updateCarousel() {
+                    items = track.querySelectorAll('.carousel-item');
+                    if(items.length === 0) return;
+
+                    // Determina quantos itens são visíveis
+                    if (window.innerWidth >= 1024) {
+                        visibleItems = 3;
+                    } else if (window.innerWidth >= 768) {
+                        visibleItems = 2;
+                    } else {
+                        visibleItems = 1;
+                    }
+
+                    itemWidth = items[0].clientWidth; // Largura do item individual
+                    const maxIndex = items.length - visibleItems;
+
+                    // Garante que o índice não saia dos limites
+                    if (currentIndex > maxIndex) {
+                        currentIndex = maxIndex;
+                    }
+                    if (currentIndex < 0) {
+                        currentIndex = 0;
+                    }
+
+                    // Move o track
+                    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+                    // Habilita/Desabilita botões
+                    prevBtn.disabled = currentIndex === 0;
+                    nextBtn.disabled = currentIndex === maxIndex;
+                    
+                    prevBtn.classList.toggle('opacity-50', currentIndex === 0);
+                    nextBtn.classList.toggle('opacity-50', currentIndex === maxIndex);
+                }
+
+                // Event Listeners dos botões
+                nextBtn.addEventListener('click', () => {
+                    const maxIndex = items.length - visibleItems;
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                        updateCarousel();
+                    }
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    }
+                });
+
+                // Atualiza o carrossel no carregamento da página e no redimensionamento
+                updateCarousel();
+                window.addEventListener('resize', updateCarousel);
+            }
+        });
+    </script>
+
+</body>
+</html>
